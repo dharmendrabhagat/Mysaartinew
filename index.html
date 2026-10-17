@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#06152b">
+<meta name="description" content="Mysaarti — thoughtful help with everyday documentation and property paperwork in Virar and nearby areas.">
+<title>Mysaarti — Everyday paperwork, made simpler</title>
+<style>
+:root{
+  --ink:#0a1f3d; --ink2:#12345b; --mint:#a9d2ff; --mint2:#5da5f5;
+  --paper:#f5f8fc; --white:#fff; --muted:#adbed4; --line:rgba(255,255,255,.13);
+  --gold:#e8c98b; --shadow:0 28px 80px rgba(0,0,0,.24);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button,a{ -webkit-tap-highlight-color:transparent}
+.container{width:min(1160px,calc(100% - 40px));margin:auto}
+.nav-wrap{position:absolute;top:0;left:0;right:0;z-index:10;color:#fff}
+nav{height:86px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.04em;font-size:1.28rem}
+.brand-mark{width:40px;height:40px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,#d5e8ff,#8ebfff);color:#082638;box-shadow:0 8px 24px rgba(74,144,226,.22)}
+.brand-mark svg{width:23px;height:23px}
+.brand small{display:block;color:#aec5e4;font-size:.61rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;margin-top:-3px}
+.nav-links{display:flex;align-items:center;gap:30px;font-size:.9rem;color:#d7e1e5}
+.nav-links a:hover{color:var(--mint)}
+.nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;padding:13px 19px;font-weight:750;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.nav-cta{background:var(--mint);color:var(--ink);font-size:.9rem}
+.nav-cta:hover,.btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.18)}
+.hero{position:relative;overflow:hidden;min-height:770px;background:radial-gradient(ellipse at 75% 38%,rgba(66,133,210,.28),transparent 32%),radial-gradient(ellipse at 12% 80%,rgba(34,83,145,.32),transparent 36%),linear-gradient(125deg,#06152b 0%,#0a2445 56%,#123c68 100%);color:white;padding:150px 0 90px}
+.hero:before{content:"";position:absolute;inset:0;opacity:.12;background-image:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(to bottom,black,transparent 92%)}
+.hero-orb{position:absolute;border:1px solid rgba(169,210,255,.24);border-radius:50%;pointer-events:none}
+.orb-one{width:500px;height:500px;right:-140px;top:110px;box-shadow:inset 0 0 90px rgba(169,210,255,.06)}
+.orb-two{width:360px;height:360px;right:-70px;top:180px;border-color:rgba(232,201,139,.22)}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.02fr .98fr;gap:55px;align-items:center;z-index:1}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--mint);font-size:.76rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+.eyebrow:before{content:"";width:26px;height:1px;background:var(--mint)}
+h1{font-size:clamp(3rem,6vw,5.5rem);line-height:.99;letter-spacing:-.075em;margin:24px 0 24px;max-width:690px}
+h1 span{color:var(--mint);font-family:Georgia,serif;font-weight:500;font-style:italic;letter-spacing:-.06em}
+.hero-copy{font-size:1.1rem;color:#c6d6eb;max-width:520px;line-height:1.8}
+.hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:32px}
+.btn-primary{background:var(--mint);color:var(--ink);box-shadow:0 8px 22px rgba(63,126,204,.16)}
+.btn-secondary{color:white;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.04)}
+.btn-secondary:hover{background:rgba(255,255,255,.1)}
+.hero-note{display:flex;align-items:center;gap:12px;margin-top:30px;color:#a9bfdb;font-size:.82rem}
+.note-dot{width:8px;height:8px;background:#7fe2bd;border-radius:50%;box-shadow:0 0 0 5px rgba(115,174,245,.14)}
+.stage{perspective:1200px;min-height:470px;display:grid;place-items:center;position:relative;isolation:isolate}
+.paper-sheet{position:absolute;z-index:-1;top:50%;left:50%;width:min(350px,78%);height:390px;border:1px solid rgba(255,255,255,.72);border-radius:25px;background:linear-gradient(145deg,#fffdf5,#e8f1fc);box-shadow:0 30px 65px rgba(0,0,0,.22);pointer-events:none}
+.paper-sheet:before{content:"";position:absolute;left:24px;right:24px;top:35px;height:8px;border-radius:99px;background:#d5e5f7;box-shadow:0 20px 0 #e6eef8,0 40px 0 #e6eef8,0 90px 0 #e6eef8,0 110px 0 #e6eef8}
+.paper-sheet:after{content:"";position:absolute;right:22px;bottom:23px;width:48px;height:48px;border:2px solid #8db5e7;border-radius:50%;background:radial-gradient(circle,rgba(141,181,231,.18) 0 42%,transparent 44%);box-shadow:inset 0 0 0 5px #fffdf5}
+.paper-back{transform:translate(-48%,-49%) rotate(8deg);background:linear-gradient(145deg,#dceaff,#b9d5f5);opacity:.75}
+.paper-back:before,.paper-back:after{display:none}
+.paper-front{transform:translate(-53%,-49%) rotate(-7deg)}
+.paper-front:after{border-color:#dcaa58;background:radial-gradient(circle,rgba(232,201,139,.38) 0 42%,transparent 44%);box-shadow:inset 0 0 0 5px #fffdf5}
+.float-label{position:absolute;z-index:2;padding:12px 15px;border:1px solid rgba(255,255,255,.18);background:rgba(9,35,48,.78);backdrop-filter:blur(14px);border-radius:15px;color:#eaf5f1;font-size:.78rem;box-shadow:0 15px 35px rgba(0,0,0,.16)}
+.float-label b{display:block;font-size:.92rem;color:var(--mint)}
+.label-top{top:32px;right:0;animation:float 5s ease-in-out infinite}
+.label-bottom{bottom:28px;left:-6px;animation:float 6s ease-in-out infinite reverse}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.portal-card{width:min(390px,100%);height:430px;position:relative;transform-style:preserve-3d;transition:transform .16s ease-out;transform:rotateY(-12deg) rotateX(5deg);border:1px solid rgba(255,255,255,.23);border-radius:30px;padding:25px;background:linear-gradient(145deg,rgba(11,35,66,.94),rgba(23,76,134,.9));backdrop-filter:blur(18px);box-shadow:0 45px 100px rgba(0,0,0,.38),inset 0 1px rgba(255,255,255,.3)}
+.card-top{display:flex;justify-content:space-between;align-items:center;color:#e1edff;font-size:.75rem}
+.card-symbol{width:48px;height:48px;border-radius:16px;background:var(--mint);color:var(--ink);display:grid;place-items:center}
+.card-symbol svg{width:27px;height:27px}
+.card-head{margin-top:32px;font-size:1.65rem;line-height:1.13;letter-spacing:-.05em;font-weight:800;max-width:250px}
+.card-head span{color:var(--mint)}
+.card-sub{font-size:.85rem;color:#c0d1e8;margin-top:10px}
+.mini-services{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}
+.mini-service{border:1px solid rgba(255,255,255,.14);background:rgba(5,24,35,.35);padding:14px;border-radius:17px;min-height:86px}
+.mini-service svg{width:20px;height:20px;color:var(--mint);margin-bottom:7px}
+.mini-service span{display:block;font-size:.76rem;color:#e4eeeb;font-weight:650}
+.card-foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.15);margin-top:23px;padding-top:16px;color:#b1c8e7;font-size:.75rem}
+.card-foot strong{font-size:1.1rem;color:var(--mint)}
+.section{padding:105px 0}
+.section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:42px}
+.kicker{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:850;color:#2d65ae}
+h2{font-size:clamp(2.2rem,4vw,3.55rem);letter-spacing:-.065em;line-height:1.05;margin:13px 0 0}
+.section-head p{max-width:410px;color:#64737a;margin:0;line-height:1.8}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.service-card{background:#fff;border:1px solid #e0e8f2;border-radius:23px;padding:25px;min-height:245px;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s}
+.service-card:hover{transform:translateY(-7px);box-shadow:0 24px 50px rgba(9,39,47,.09);border-color:#b8d3f4}
+.service-icon{width:49px;height:49px;display:grid;place-items:center;background:#eaf2ff;border-radius:16px;color:#245fb2;margin-bottom:23px}
+.service-icon svg{width:25px;height:25px}
+.service-card h3{font-size:1.14rem;letter-spacing:-.025em;margin:0 0 8px}
+.service-card p{font-size:.9rem;color:#6b7a7d;line-height:1.7;margin:0;max-width:300px}
+.service-meta{display:flex;align-items:center;justify-content:space-between;margin-top:21px;font-size:.8rem;color:#5c6c70}
+.service-meta strong{color:#143e70;font-size:.9rem}
+.service-arrow{width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:#edf3fb;color:#245fb2}
+.service-card.featured{background:linear-gradient(145deg,#0b2342,#174c86);color:white;border-color:#174c86}
+.service-card.featured .service-icon{background:rgba(169,210,255,.16);color:var(--mint)}
+.service-card.featured p,.service-card.featured .service-meta{color:#c0d1e8}
+.service-card.featured .service-meta strong{color:var(--mint)}
+.notice{margin-top:22px;padding:16px 18px;border-radius:14px;background:#eaf1f8;color:#536579;font-size:.82rem;line-height:1.7}
+.how{background:#edf3fa}
+.how-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;align-items:start}
+.how-intro p{color:#617185;line-height:1.85;max-width:390px}
+.steps{display:grid;gap:0}
+.step{display:grid;grid-template-columns:48px 1fr;gap:19px;padding:22px 0;border-bottom:1px solid #d7e2ef}
+.step:first-child{padding-top:0}
+.step-number{width:43px;height:43px;border:1px solid #c7d7ea;border-radius:14px;display:grid;place-items:center;font-size:.8rem;font-weight:800;color:#2c66b8}
+.step h3{margin:0 0 5px;font-size:1.05rem}
+.step p{margin:0;color:#68788c;font-size:.9rem;line-height:1.7}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
+.price-panel{padding:36px;border-radius:28px;background:var(--ink);color:white;position:relative;overflow:hidden}
+.price-panel:after{content:"";position:absolute;width:250px;height:250px;border-radius:50%;border:1px solid rgba(184,243,223,.15);right:-100px;top:-95px;box-shadow:0 0 0 28px rgba(184,243,223,.025),0 0 0 58px rgba(184,243,223,.02)}
+.price-panel .kicker{color:var(--mint)}
+.price-panel h2{max-width:430px;font-size:2.65rem}
+.price-big{font-size:3.8rem;font-weight:800;letter-spacing:-.08em;margin:28px 0 0}
+.price-big span{font-size:.95rem;letter-spacing:0;font-weight:600;color:#b7c9df}
+.price-panel p{color:#b7c9df;max-width:420px;line-height:1.8;font-size:.9rem}
+.price-list{padding:30px 8px}
+.price-row{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid #e0e7e1;font-size:.92rem}
+.price-row span:last-child{font-weight:800;white-space:nowrap}
+.price-foot{font-size:.78rem;color:#687a90;line-height:1.7;margin-top:18px}
+.contact{background:linear-gradient(125deg,#082031,#0c3942);color:white;padding:90px 0}
+.contact-grid{display:grid;grid-template-columns:1fr .9fr;gap:70px;align-items:center}
+.contact h2{max-width:580px}
+.contact-copy{color:#c2d2e7;max-width:480px;line-height:1.8}
+.contact-points{display:flex;flex-wrap:wrap;gap:10px;margin-top:27px}
+.pill{border:1px solid rgba(255,255,255,.19);border-radius:999px;padding:8px 12px;font-size:.78rem;color:#e1ebfa}
+.contact-box{padding:27px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);border-radius:24px;backdrop-filter:blur(12px)}
+.contact-box label{display:block;font-size:.78rem;color:#c7d7ed;margin:14px 0 6px}
+.contact-box input,.contact-box select,.contact-box textarea{width:100%;border:1px solid rgba(255,255,255,.17);background:rgba(3,20,30,.55);border-radius:12px;padding:12px 13px;color:white;outline:none}
+.contact-box input:focus,.contact-box select:focus,.contact-box textarea:focus{border-color:var(--mint)}
+.contact-box select option{color:#081b2b}
+.contact-box textarea{resize:vertical;min-height:85px}
+.contact-box .btn{width:100%;margin-top:17px}
+.form-note{font-size:.73rem;color:#9cb3d0;line-height:1.6;margin-top:12px}
+footer{background:#061521;color:#9badc2;padding:27px 0;font-size:.78rem}
+.footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+.footer-brand{color:white;font-weight:800}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap}
+.footer-links a:hover{color:var(--mint)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+@media(max-width:900px){
+ .hero-grid,.how-grid,.contact-grid{grid-template-columns:1fr;gap:42px}
+ .hero{padding-top:130px}
+ .stage{min-height:460px}
+ .section-head{display:block}.section-head p{margin-top:20px}
+ .service-grid{grid-template-columns:repeat(2,1fr)}
+ .contact-grid{gap:35px}
+}
+@media(max-width:600px){
+ .container{width:min(100% - 30px,1160px)}
+ nav{height:72px}.nav-links{display:none}.nav-cta{padding:10px 14px;font-size:.82rem}
+ .hero{min-height:auto;padding:120px 0 55px}
+ h1{font-size:3.3rem}
+ .hero-copy{font-size:1rem}
+ .stage{min-height:420px;margin-top:5px}
+ .portal-card{height:405px;padding:21px;transform:none}
+ .label-top{right:-2px;top:13px}.label-bottom{left:0;bottom:4px}
+ .section{padding:72px 0}
+ .service-grid{grid-template-columns:1fr}
+ .service-card{min-height:215px}
+ .pricing-grid{grid-template-columns:1fr}
+ .price-panel{padding:28px}
+ .price-panel h2{font-size:2.3rem}
+ .contact{padding:70px 0}
+ .contact-box{padding:20px}
+}
+
+/* Additional mobile-first safeguards */
+html { -webkit-text-size-adjust: 100%; }
+body { overflow-x: hidden; }
+img, svg, video, canvas { max-width: 100%; }
+button, .btn, .nav-cta, input, select, textarea { touch-action: manipulation; }
+a, button { -webkit-tap-highlight-color: rgba(93,165,245,.18); }
+input, select, textarea { font-size: 16px; } /* Prevents iOS Safari zoom on focus */
+
+@media (max-width: 760px) {
+  .container { width: calc(100% - 32px); }
+  nav { gap: 12px; }
+  .brand { font-size: 1.12rem; gap: 9px; }
+  .brand-mark { width: 36px; height: 36px; border-radius: 12px; flex: 0 0 auto; }
+  .nav-cta { min-height: 44px; white-space: nowrap; }
+  .hero-grid { gap: 24px; }
+  .hero h1 { overflow-wrap: anywhere; }
+  .hero-actions { display: grid; grid-template-columns: 1fr; max-width: 360px; }
+  .hero-actions .btn { width: 100%; min-height: 48px; }
+  .hero-note { align-items: flex-start; line-height: 1.6; }
+  .stage { width: 100%; min-width: 0; }
+  .portal-card { width: min(100%, 390px); }
+  .float-label { max-width: 68%; }
+  .label-top { right: 0; }
+  .label-bottom { left: 0; }
+  .section-head { gap: 18px; }
+  .service-card { min-width: 0; }
+  .service-card h3, .service-card p { overflow-wrap: anywhere; }
+  .pricing-grid, .service-grid, .how-grid, .contact-grid { min-width: 0; }
+  .price-row { align-items: flex-start; }
+  .price-row span:first-child { min-width: 0; }
+  .price-row span:last-child { text-align: right; white-space: normal; }
+  .contact-box { min-width: 0; }
+  .contact-box .btn { min-height: 48px; }
+  .footer-row { align-items: flex-start; }
+}
+
+@media (max-width: 420px) {
+  .container { width: calc(100% - 26px); }
+  nav { height: 68px; }
+  .brand small { font-size: .55rem; letter-spacing: .11em; }
+  .nav-cta { padding: 10px 12px; font-size: .78rem; }
+  .hero { padding-top: 108px; }
+  h1 { font-size: clamp(2.55rem, 12vw, 3.2rem); }
+  .hero-copy { font-size: .96rem; }
+  .stage { min-height: 405px; }
+  .portal-card { height: auto; min-height: 385px; padding: 18px; border-radius: 24px; }
+  .card-head { font-size: 1.5rem; margin-top: 25px; }
+  .mini-services { gap: 8px; margin-top: 22px; }
+  .mini-service { padding: 11px; min-height: 82px; }
+  .mini-service span { font-size: .72rem; }
+  .card-foot { gap: 10px; font-size: .68rem; }
+  .card-foot strong { font-size: .95rem; }
+  .float-label { padding: 10px 12px; font-size: .7rem; }
+  .float-label b { font-size: .8rem; }
+  .section { padding: 62px 0; }
+  .service-card { padding: 22px; }
+  .price-big { font-size: 3.2rem; }
+  .price-big span { display: block; margin-top: 4px; }
+  .price-panel h2 { font-size: 2.15rem; }
+  .contact { padding: 62px 0; }
+  .contact-box { padding: 17px; }
+  .footer-links { gap: 14px; }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .service-card:hover, .btn:hover, .nav-cta:hover { transform: none; box-shadow: none; }
+}
+
+</style>
+</head>
+<body>
+<div class="nav-wrap">
+  <nav class="container" aria-label="Main navigation">
+    <a class="brand" href="#top" aria-label="Mysaarti home">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9.5V21h14V9.5"/><path d="m9 15 2 2 4-4"/></svg></span>
+      <span>Mysaarti<small>Everyday assistance</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a><a href="#process">How it works</a><a href="#pricing">Pricing</a>
+    </div>
+    <a class="nav-cta" href="#contact">Talk to us <span aria-hidden="true">↗</span></a>
+  </nav>
+</div>
+
+<header class="hero" id="top">
+  <div class="hero-orb orb-one"></div><div class="hero-orb orb-two"></div>
+  <div class="container hero-grid">
+    <div class="reveal">
+      <div class="eyebrow">Local help. Less hassle.</div>
+      <h1>Life has enough paperwork.<br><span>Let’s simplify it.</span></h1>
+      <p class="hero-copy">Practical, personal assistance with everyday documentation and property paperwork — so you can spend less time figuring out forms and more time on what matters.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#services">Explore services <span aria-hidden="true">↓</span></a>
+        <a class="btn btn-secondary" href="#contact">Request assistance <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="hero-note"><span class="note-dot"></span> Independent assistance for residents in Virar and nearby areas</div>
+    </div>
+    <div class="stage reveal" id="stage">
+      <div class="paper-sheet paper-back" aria-hidden="true"></div>
+      <div class="paper-sheet paper-front" aria-hidden="true"></div>
+      <div class="float-label label-top"><b>One friendly point of contact</b>For everyday paperwork</div>
+      <div class="portal-card" id="tiltCard">
+        <div class="card-top">
+          <span>YOUR LOCAL ASSISTANCE PARTNER</span>
+          <span class="card-symbol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9.5V21h14V9.5"/><path d="m9 15 2 2 4-4"/></svg></span>
+        </div>
+        <div class="card-head">A little less<br><span>paperwork stress.</span></div>
+        <div class="card-sub">Clear steps. Helpful guidance. Human support.</div>
+        <div class="mini-services">
+          <div class="mini-service"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V5a2 2 0 0 1 2-2h9l5 5v13"/><path d="M14 3v6h6M8 13h8M8 17h6"/></svg><span>Document assistance</span></div>
+          <div class="mini-service"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m3 10 9-7 9 7"/><path d="M5 9v12h14V9M9 21v-7h6v7"/></svg><span>Property paperwork</span></div>
+          <div class="mini-service"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16 9"/></svg><span>Application guidance</span></div>
+          <div class="mini-service"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4.5 6v5.5c0 4.5 3.2 7.6 7.5 9.5 4.3-1.9 7.5-5 7.5-9.5V6L12 3Z"/><path d="m9 12 2 2 4-4"/></svg><span>Transparent process</span></div>
+        </div>
+        <div class="card-foot"><span>Independent service provider</span><strong>Mysaarti</strong></div>
+      </div>
+      <div class="float-label label-bottom"><b>Simple, transparent fees</b>Official charges shown separately</div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="kicker">What we can help with</div><h2>Everyday tasks.<br>Handled with care.</h2></div>
+      <p>Get practical guidance for common paperwork and property-related requests. We explain the process, help organize documents, and support you through the appropriate official channels.</p>
+    </div>
+    <div class="service-grid">
+      <article class="service-card featured reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 10h1m4 0h1M9 14h1m4 0h1M10 21v-4h4v4"/></svg></div>
+        <h3>Property tax name change</h3><p>Guidance with documents and the name-change application process for applicable municipal property-tax records.</p>
+        <div class="service-meta"><strong>From ₹500*</strong><span class="service-arrow">↗</span></div>
+      </article>
+      <article class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5M8 17h3"/><path d="m15 16 2 2 4-4"/></svg></div>
+        <h3>Electricity bill name update</h3><p>Help preparing the paperwork and navigating your electricity provider’s name-transfer process.</p>
+        <div class="service-meta"><strong>From ₹500*</strong><span class="service-arrow">↗</span></div>
+      </article>
+      <article class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="9" r="2.5"/><path d="M8.5 16c.8-2.2 6.2-2.2 7 0"/></svg></div>
+        <h3>Aadhaar address update assistance</h3><p>Guidance on required documents and the applicable official update process, with the customer in control of authentication.</p>
+        <div class="service-meta"><strong>From ₹500*</strong><span class="service-arrow">↗</span></div>
+      </article>
+      <article class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><circle cx="9" cy="10" r="2"/><path d="M6 16c.7-2 5.3-2 6 0M14 9h3M14 13h3M14 17h2"/></svg></div>
+        <h3>PAN application / update</h3><p>Help understanding application requirements and preparing information for the appropriate authorized channel.</p>
+        <div class="service-meta"><strong>From ₹500*</strong><span class="service-arrow">↗</span></div>
+      </article>
+      <article class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h4"/><path d="m15 16 2 2 3-4"/></svg></div>
+        <h3>Voter registration / update</h3><p>Assistance with understanding voter application forms and supporting documents through official channels.</p>
+        <div class="service-meta"><strong>From ₹500*</strong><span class="service-arrow">↗</span></div>
+      </article>
+      <article class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4.5 6v5.5c0 4.5 3.2 7.6 7.5 9.5 4.3-1.9 7.5-5 7.5-9.5V6L12 3Z"/><path d="M12 8v4l2.5 1.5"/></svg></div>
+        <h3>Insurance support</h3><p>Insurance-related services are not currently offered. This section may be updated if the appropriate authorization is obtained.</p>
+        <div class="service-meta"><strong>Coming later</strong><span class="service-arrow">↗</span></div>
+      </article>
+    </div>
+    <div class="notice reveal"><strong>*Starting fees:</strong> The final service fee depends on the scope and complexity of the request. Official government or provider charges, if any, are separate and will be explained in advance. Mysaarti is an independent assistance service, not a government office or an authorized service centre unless explicitly stated.</div>
+  </div>
+</section>
+
+<section class="section how" id="process">
+  <div class="container how-grid">
+    <div class="how-intro reveal">
+      <div class="kicker">A clear process</div><h2>Know what happens next.</h2>
+      <p>No confusing promises. We explain the steps, help you prepare, and keep you informed about what is within our control.</p>
+      <a class="btn btn-primary" href="#contact" style="margin-top:15px">Tell us what you need ↗</a>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="step-number">01</div><div><h3>Tell us about your request</h3><p>Share the service you need and a brief description. Please don’t send Aadhaar numbers, OTPs or sensitive documents in the first message.</p></div></div>
+      <div class="step reveal"><div class="step-number">02</div><div><h3>Get the steps and fee upfront</h3><p>We explain the likely documents, our service fee and any separate official charges before you decide to proceed.</p></div></div>
+      <div class="step reveal"><div class="step-number">03</div><div><h3>Prepare and submit appropriately</h3><p>We assist with paperwork where permitted. You review and approve your details and control your own authentication.</p></div></div>
+      <div class="step reveal"><div class="step-number">04</div><div><h3>Track the request</h3><p>We can help you understand the next steps, but processing times and decisions belong to the relevant authority or provider.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="pricing">
+  <div class="container pricing-grid">
+    <div class="price-panel reveal">
+      <div class="kicker">Straightforward pricing</div>
+      <h2>Know the fee before you begin.</h2>
+      <div class="price-big">₹500 <span>starting service fee</span></div>
+      <p>For selected documentation-assistance services. We’ll confirm the exact fee based on your request before work begins.</p>
+      <a class="btn btn-primary" href="#contact">Ask for a quote ↗</a>
+    </div>
+    <div class="price-list reveal">
+      <div class="kicker">What to expect</div>
+      <div class="price-row"><span>Service assistance</span><span>From ₹500</span></div>
+      <div class="price-row"><span>Official / third-party charges</span><span>Separate, if applicable</span></div>
+      <div class="price-row"><span>Complex or additional work</span><span>Quoted in advance</span></div>
+      <div class="price-row"><span>Approval or processing time</span><span>Set by authority</span></div>
+      <p class="price-foot">Prices shown are illustrative starting fees and may be updated. No government approval, outcome or processing timeline is guaranteed.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container contact-grid">
+    <div class="reveal">
+      <div class="kicker" style="color:var(--mint)">Start with a conversation</div>
+      <h2>Need help with something else?</h2>
+      <p class="contact-copy">Tell us what you need. We’ll review your request and let you know whether we can assist, what information is needed, and the expected service fee.</p>
+      <div class="contact-points"><span class="pill">Local assistance</span><span class="pill">Clear fees</span><span class="pill">No guaranteed approvals</span></div>
+    </div>
+    <form class="contact-box reveal" id="contactForm">
+      <div style="font-size:1.2rem;font-weight:800;letter-spacing:-.03em">Request a callback</div>
+      <div style="font-size:.82rem;color:#b5c8e2;margin-top:5px">This opens WhatsApp with your request details.</div>
+      <label for="name">Your name</label><input id="name" name="name" autocomplete="name" placeholder="Enter your name" required>
+      <label for="service">What do you need help with?</label>
+      <select id="service" name="service" required>
+        <option value="">Choose a service</option>
+        <option>Property tax name change</option><option>Electricity bill name update</option><option>Aadhaar address update assistance</option><option>PAN application / update assistance</option><option>Voter registration / update</option><option>Something else</option>
+      </select>
+      <label for="message">A short description</label><textarea id="message" name="message" placeholder="Briefly describe your request (no ID numbers or OTPs)" required></textarea>
+      <button class="btn btn-primary" type="submit">Continue to WhatsApp <span aria-hidden="true">↗</span></button>
+      <div class="form-note">WhatsApp will open with your request pre-filled. Review the details and tap Send to contact Mysaarti. Do not include OTPs or sensitive identity details.</div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <div><span class="footer-brand">Mysaarti</span><span> · Everyday paperwork, made simpler.</span><br><span style="display:inline-block;margin-top:6px">Independent documentation assistance · Virar and nearby areas</span></div>
+    <div class="footer-links"><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a></div>
+    <div>© <span id="year"></span> Mysaarti</div>
+  </div>
+</footer>
+<script>
+/* Replace this with your WhatsApp number including country code, digits only.
+   Example format for India: 91XXXXXXXXXX */
+const WHATSAPP_NUMBER = "919967148397";
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const card = document.getElementById("tiltCard");
+const stage = document.getElementById("stage");
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (card && stage && !reducedMotion && window.matchMedia("(pointer:fine)").matches) {
+  stage.addEventListener("pointermove", (e) => {
+    const rect = stage.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - .5;
+    const y = (e.clientY - rect.top) / rect.height - .5;
+    card.style.transform = `rotateY(${x * 17 - 5}deg) rotateX(${-y * 12 + 3}deg) translateZ(8px)`;
+  });
+  stage.addEventListener("pointerleave", () => card.style.transform = "rotateY(-12deg) rotateX(5deg)");
+}
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const name = document.getElementById("name").value.trim();
+  const service = document.getElementById("service").value;
+  const message = document.getElementById("message").value.trim();
+  const text = `Hello Mysaarti, I'd like assistance.\nName: ${name}\nService: ${service}\nRequest: ${message}`;
+  if (!WHATSAPP_NUMBER || WHATSAPP_NUMBER.includes("REPLACE")) {
+    alert("Website demo: please add your WhatsApp number in the HTML code before publishing.");
+    return;
+  }
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(text)}`;
+  // Navigate directly from the button click. Mobile devices with WhatsApp
+  // installed should hand off to the app; otherwise the browser opens WhatsApp Web.
+  window.location.href = whatsappUrl;
+});
+</script>
+</body>
+</html>
