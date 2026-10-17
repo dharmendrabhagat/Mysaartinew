@@ -78,20 +78,37 @@ h1 span{color:var(--mint);font-family:Georgia,serif;font-weight:500;font-style:i
 .kicker{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:850;color:#2d65ae}
 h2{font-size:clamp(2.2rem,4vw,3.55rem);letter-spacing:-.065em;line-height:1.05;margin:13px 0 0}
 .section-head p{max-width:410px;color:#64737a;margin:0;line-height:1.8}
-.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.service-card{background:#fff;border:1px solid #e0e8f2;border-radius:23px;padding:25px;min-height:245px;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s}
-.service-card:hover{transform:translateY(-7px);box-shadow:0 24px 50px rgba(9,39,47,.09);border-color:#b8d3f4}
-.service-icon{width:49px;height:49px;display:grid;place-items:center;background:#eaf2ff;border-radius:16px;color:#245fb2;margin-bottom:23px}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.service-card{--service-accent:#2d65ae;--service-tint:#edf4ff;background:linear-gradient(145deg,#fff 0%,#fbfdff 100%);border:1px solid #dce6f2;border-radius:24px;padding:24px;min-height:300px;position:relative;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 8px 24px rgba(24,60,102,.035);transition:transform .25s,box-shadow .25s,border-color .25s}
+.service-card:before{content:"";position:absolute;width:170px;height:170px;right:-88px;top:-102px;border-radius:50%;background:var(--service-tint);transition:transform .35s}
+.service-card:hover,.service-card:focus-within,.service-card:has(.service-more[open]){transform:translateY(-5px);box-shadow:0 20px 42px rgba(24,60,102,.11);border-color:#bdd2ed}
+.service-card:nth-child(2){--service-accent:#328174;--service-tint:#e7f6f1}
+.service-card:nth-child(3){--service-accent:#8e68bd;--service-tint:#f2ebfb}
+.service-card:nth-child(4){--service-accent:#ca8a3d;--service-tint:#fff3df}
+.service-card:nth-child(5){--service-accent:#427eb4;--service-tint:#e8f3fb}
+.service-card:nth-child(6){--service-accent:#73849b;--service-tint:#edf1f6}
+.service-card:hover:before,.service-card:focus-within:before,.service-card:has(.service-more[open]):before{transform:scale(1.3)}
+.service-top{position:relative;display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.service-icon{width:50px;height:50px;display:grid;place-items:center;background:var(--service-tint);border-radius:17px;color:var(--service-accent);margin:0;transition:transform .25s,background .25s}
+.service-card:hover .service-icon,.service-card:focus-within .service-icon{transform:rotate(-5deg) scale(1.06)}
+.service-category{padding:6px 10px;border-radius:999px;background:var(--service-tint);color:var(--service-accent);font-size:.67rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
 .service-icon svg{width:25px;height:25px}
-.service-card h3{font-size:1.14rem;letter-spacing:-.025em;margin:0 0 8px}
-.service-card p{font-size:.9rem;color:#6b7a7d;line-height:1.7;margin:0;max-width:300px}
-.service-meta{display:flex;align-items:center;justify-content:space-between;margin-top:21px;font-size:.8rem;color:#5c6c70}
-.service-meta strong{color:#143e70;font-size:.9rem}
-.service-arrow{width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:#edf3fb;color:#245fb2}
-.service-card.featured{background:linear-gradient(145deg,#0b2342,#174c86);color:white;border-color:#174c86}
-.service-card.featured .service-icon{background:rgba(169,210,255,.16);color:var(--mint)}
-.service-card.featured p,.service-card.featured .service-meta{color:#c0d1e8}
-.service-card.featured .service-meta strong{color:var(--mint)}
+.service-card h3{position:relative;font-size:1.12rem;letter-spacing:-.025em;margin:0 0 8px;color:#102b4e}
+.service-card>p{position:relative;font-size:.9rem;color:#687a90;line-height:1.7;margin:0;max-width:320px}
+.service-meta{position:relative;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:19px;font-size:.78rem;color:#64768c}
+.service-meta strong{color:#153e70;font-size:.91rem}
+.service-more{position:relative;margin-top:15px;border-top:1px solid #e7edf5}
+.service-more summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 0 0;color:var(--service-accent);font-size:.82rem;font-weight:800;cursor:pointer}
+.service-more summary::-webkit-details-marker{display:none}
+.service-more summary:focus-visible,.service-action:focus-visible{outline:3px solid #8bb8ec;outline-offset:4px;border-radius:5px}
+.service-toggle{width:24px;height:24px;display:grid;place-items:center;border-radius:50%;background:var(--service-tint);font-size:1rem;transition:transform .2s}
+.service-more[open] .service-toggle{transform:rotate(45deg)}
+.service-more-content{padding:10px 0 1px;animation:service-in .22s ease-out}
+.service-more-content p{margin:0 0 12px;color:#6a7c91;font-size:.82rem;line-height:1.65}
+.service-action{display:inline-flex;align-items:center;gap:7px;color:#fff;background:#143e70;border-radius:999px;padding:10px 14px;font-size:.78rem;font-weight:800;transition:transform .2s,background .2s}
+.service-action:hover{transform:translateY(-2px);background:#245b98}
+.service-unavailable{color:#74839a;background:#f0f3f7}
+@keyframes service-in{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
 .notice{margin-top:22px;padding:16px 18px;border-radius:14px;background:#eaf1f8;color:#536579;font-size:.82rem;line-height:1.7}
 .how{background:#edf3fa}
 .how-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;align-items:start}
@@ -292,35 +309,41 @@ input, select, textarea { font-size: 16px; } /* Prevents iOS Safari zoom on focu
       <p>Get practical guidance for common paperwork and property-related requests. We explain the process, help organize documents, and support you through the appropriate official channels.</p>
     </div>
     <div class="service-grid">
-      <article class="service-card featured reveal">
-        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 10h1m4 0h1M9 14h1m4 0h1M10 21v-4h4v4"/></svg></div>
+      <article class="service-card reveal">
+        <div class="service-top"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 10h1m4 0h1M9 14h1m4 0h1M10 21v-4h4v4"/></svg></div><span class="service-category">Property</span></div>
         <h3>Property tax name change</h3><p>Guidance with documents and the name-change application process for applicable municipal property-tax records.</p>
-        <div class="service-meta"><strong>From ₹500*</strong><span class="service-arrow">↗</span></div>
+        <div class="service-meta"><span>Service fee</span><strong>From ₹500*</strong></div>
+        <details class="service-more"><summary>See how we can help <span class="service-toggle" aria-hidden="true">+</span></summary><div class="service-more-content"><p>Understand the paperwork, prepare your request and learn the next steps for your local property-tax record.</p><a class="service-action" href="#contact" data-service="Property tax name change">Ask about this service <span aria-hidden="true">↗</span></a></div></details>
       </article>
       <article class="service-card reveal">
-        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5M8 17h3"/><path d="m15 16 2 2 4-4"/></svg></div>
+        <div class="service-top"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5M8 17h3"/><path d="m15 16 2 2 4-4"/></svg></div><span class="service-category">Utilities</span></div>
         <h3>Electricity bill name update</h3><p>Help preparing the paperwork and navigating your electricity provider’s name-transfer process.</p>
-        <div class="service-meta"><strong>From ₹500*</strong><span class="service-arrow">↗</span></div>
+        <div class="service-meta"><span>Service fee</span><strong>From ₹500*</strong></div>
+        <details class="service-more"><summary>See how we can help <span class="service-toggle" aria-hidden="true">+</span></summary><div class="service-more-content"><p>Get help understanding the provider’s process and organizing the information for your request.</p><a class="service-action" href="#contact" data-service="Electricity bill name update">Ask about this service <span aria-hidden="true">↗</span></a></div></details>
       </article>
       <article class="service-card reveal">
-        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="9" r="2.5"/><path d="M8.5 16c.8-2.2 6.2-2.2 7 0"/></svg></div>
+        <div class="service-top"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="9" r="2.5"/><path d="M8.5 16c.8-2.2 6.2-2.2 7 0"/></svg></div><span class="service-category">Identity</span></div>
         <h3>Aadhaar address update assistance</h3><p>Guidance on required documents and the applicable official update process, with the customer in control of authentication.</p>
-        <div class="service-meta"><strong>From ₹500*</strong><span class="service-arrow">↗</span></div>
+        <div class="service-meta"><span>Service fee</span><strong>From ₹500*</strong></div>
+        <details class="service-more"><summary>See how we can help <span class="service-toggle" aria-hidden="true">+</span></summary><div class="service-more-content"><p>We can explain the document checklist and official steps. You stay in control of your Aadhaar details and authentication.</p><a class="service-action" href="#contact" data-service="Aadhaar address update assistance">Ask about this service <span aria-hidden="true">↗</span></a></div></details>
       </article>
       <article class="service-card reveal">
-        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><circle cx="9" cy="10" r="2"/><path d="M6 16c.7-2 5.3-2 6 0M14 9h3M14 13h3M14 17h2"/></svg></div>
+        <div class="service-top"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><circle cx="9" cy="10" r="2"/><path d="M6 16c.7-2 5.3-2 6 0M14 9h3M14 13h3M14 17h2"/></svg></div><span class="service-category">Documents</span></div>
         <h3>PAN application / update</h3><p>Help understanding application requirements and preparing information for the appropriate authorized channel.</p>
-        <div class="service-meta"><strong>From ₹500*</strong><span class="service-arrow">↗</span></div>
+        <div class="service-meta"><span>Service fee</span><strong>From ₹500*</strong></div>
+        <details class="service-more"><summary>See how we can help <span class="service-toggle" aria-hidden="true">+</span></summary><div class="service-more-content"><p>Get a clearer view of the information needed and where to continue through an appropriate authorized channel.</p><a class="service-action" href="#contact" data-service="PAN application / update assistance">Ask about this service <span aria-hidden="true">↗</span></a></div></details>
       </article>
       <article class="service-card reveal">
-        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h4"/><path d="m15 16 2 2 3-4"/></svg></div>
+        <div class="service-top"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h4"/><path d="m15 16 2 2 3-4"/></svg></div><span class="service-category">Documents</span></div>
         <h3>Voter registration / update</h3><p>Assistance with understanding voter application forms and supporting documents through official channels.</p>
-        <div class="service-meta"><strong>From ₹500*</strong><span class="service-arrow">↗</span></div>
+        <div class="service-meta"><span>Service fee</span><strong>From ₹500*</strong></div>
+        <details class="service-more"><summary>See how we can help <span class="service-toggle" aria-hidden="true">+</span></summary><div class="service-more-content"><p>We can help you understand the form and supporting documents before you use the official application channel.</p><a class="service-action" href="#contact" data-service="Voter registration / update">Ask about this service <span aria-hidden="true">↗</span></a></div></details>
       </article>
       <article class="service-card reveal">
-        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4.5 6v5.5c0 4.5 3.2 7.6 7.5 9.5 4.3-1.9 7.5-5 7.5-9.5V6L12 3Z"/><path d="M12 8v4l2.5 1.5"/></svg></div>
+        <div class="service-top"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4.5 6v5.5c0 4.5 3.2 7.6 7.5 9.5 4.3-1.9 7.5-5 7.5-9.5V6L12 3Z"/><path d="M12 8v4l2.5 1.5"/></svg></div><span class="service-category">Not available yet</span></div>
         <h3>Insurance support</h3><p>Insurance-related services are not currently offered. This section may be updated if the appropriate authorization is obtained.</p>
-        <div class="service-meta"><strong>Coming later</strong><span class="service-arrow">↗</span></div>
+        <div class="service-meta"><span>Availability</span><strong>Coming later</strong></div>
+        <div class="service-more service-unavailable"><div style="padding:13px 0 0;color:#74839a;font-size:.82rem;font-weight:700">We’ll update this page if this service becomes available.</div></div>
       </article>
     </div>
     <div class="notice reveal"><strong>*Starting fees:</strong> The final service fee depends on the scope and complexity of the request. Official government or provider charges, if any, are separate and will be explained in advance. Mysaarti is an independent assistance service, not a government office or an authorized service centre unless explicitly stated.</div>
@@ -422,6 +445,13 @@ const observer = new IntersectionObserver(entries => {
   });
 },{threshold:.12});
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+const serviceSelect = document.getElementById("service");
+document.querySelectorAll("[data-service]").forEach(link => {
+  link.addEventListener("click", () => {
+    serviceSelect.value = link.dataset.service;
+  });
+});
 
 document.getElementById("contactForm").addEventListener("submit", function(e) {
   e.preventDefault();
