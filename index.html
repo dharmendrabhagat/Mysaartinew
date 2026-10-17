@@ -130,7 +130,12 @@ h2{font-size:clamp(2.2rem,4vw,3.55rem);letter-spacing:-.065em;line-height:1.05;m
 .price-list{padding:30px 8px}
 .price-row{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid #e0e7e1;font-size:.92rem}
 .price-row span:last-child{font-weight:800;white-space:nowrap}
-.price-foot{font-size:.78rem;color:#687a90;line-height:1.7;margin-top:18px}
+.timing-note{display:flex;align-items:flex-start;gap:13px;margin-top:22px;padding:16px;border:1px solid #dce8f3;border-radius:18px;background:linear-gradient(135deg,#f4f8fd,#edf4fb)}
+.timing-icon{flex:0 0 38px;width:38px;height:38px;display:grid;place-items:center;border-radius:13px;background:#fff;color:#356da9;box-shadow:0 4px 12px rgba(35,83,132,.08)}
+.timing-icon svg{width:19px;height:19px}
+.timing-copy{min-width:0}
+.timing-label{display:inline-block;margin-bottom:4px;color:#52708f;font-size:.65rem;font-weight:650;letter-spacing:.1em;text-transform:uppercase}
+.timing-copy p{margin:0;color:#657991;font-size:.79rem;font-weight:400;line-height:1.65}
 .contact{background:linear-gradient(125deg,#082031,#0c3942);color:white;padding:90px 0}
 .contact-grid{display:grid;grid-template-columns:1fr .9fr;gap:70px;align-items:center}
 .contact h2{max-width:580px}
@@ -380,8 +385,10 @@ input, select, textarea { font-size: 16px; } /* Prevents iOS Safari zoom on focu
       <div class="price-row"><span>Service assistance</span><span>From ₹500</span></div>
       <div class="price-row"><span>Official / third-party charges</span><span>Separate, if applicable</span></div>
       <div class="price-row"><span>Complex or additional work</span><span>Quoted in advance</span></div>
-      <div class="price-row"><span>Approval or processing time</span><span>Set by authority</span></div>
-      <p class="price-foot">Prices shown are illustrative starting fees and may be updated. Final decisions and processing times are determined by the relevant authority.</p>
+      <div class="timing-note">
+        <span class="timing-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+        <div class="timing-copy"><span class="timing-label">A little heads-up</span><p>Processing times are set by the relevant authority. Starting fees are indicative—we’ll confirm yours before you begin.</p></div>
+      </div>
     </div>
   </div>
 </section>
