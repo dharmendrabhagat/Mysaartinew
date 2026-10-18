@@ -86,7 +86,8 @@ h2{font-size:clamp(2.2rem,4vw,3.55rem);letter-spacing:-.065em;line-height:1.05;m
 .service-card:nth-child(3){--service-accent:#8e68bd;--service-tint:#f2ebfb}
 .service-card:nth-child(4){--service-accent:#ca8a3d;--service-tint:#fff3df}
 .service-card:nth-child(5){--service-accent:#427eb4;--service-tint:#e8f3fb}
-.service-card:nth-child(6){--service-accent:#73849b;--service-tint:#edf1f6}
+.service-card:nth-child(6){--service-accent:#328174;--service-tint:#e7f6f1}
+.service-card:nth-child(7){--service-accent:#73849b;--service-tint:#edf1f6}
 .service-card:hover:before,.service-card:focus-within:before,.service-card:has(.service-more[open]):before{transform:scale(1.3)}
 .service-top{position:relative;display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
 .service-icon{width:50px;height:50px;display:grid;place-items:center;background:var(--service-tint);border-radius:17px;color:var(--service-accent);margin:0;transition:transform .25s,background .25s}
@@ -110,6 +111,13 @@ h2{font-size:clamp(2.2rem,4vw,3.55rem);letter-spacing:-.065em;line-height:1.05;m
 .service-unavailable{color:#74839a;background:#f0f3f7}
 @keyframes service-in{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
 .notice{margin-top:22px;padding:16px 18px;border-radius:14px;background:#eaf1f8;color:#536579;font-size:.82rem;line-height:1.7}
+.documents{background:#edf3fa}
+.document-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.document-card{padding:22px;border:1px solid #dce6f2;border-radius:20px;background:#fff}
+.document-card h3{margin:0 0 12px;color:#102b4e;font-size:1rem;letter-spacing:-.02em}
+.document-card ul{margin:0;padding-left:19px;color:#687a90;font-size:.86rem;line-height:1.7}
+.document-card li+li{margin-top:5px}
+.document-note{margin:22px 0 0;color:#617185;font-size:.84rem;line-height:1.7}
 .how{background:#edf3fa}
 .how-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;align-items:start}
 .how-intro p{color:#617185;line-height:1.85;max-width:390px}
@@ -164,6 +172,7 @@ footer{background:#061521;color:#9badc2;padding:27px 0;font-size:.78rem}
  .stage{min-height:460px}
  .section-head{display:block}.section-head p{margin-top:20px}
  .service-grid{grid-template-columns:repeat(2,1fr)}
+ .document-grid{grid-template-columns:repeat(2,1fr)}
  .contact-grid{gap:35px}
 }
 @media(max-width:600px){
@@ -177,6 +186,7 @@ footer{background:#061521;color:#9badc2;padding:27px 0;font-size:.78rem}
  .label-top{right:-2px;top:13px}.label-bottom{left:0;bottom:4px}
  .section{padding:72px 0}
  .service-grid{grid-template-columns:1fr}
+ .document-grid{grid-template-columns:1fr}
  .service-card{min-height:215px}
  .pricing-grid{grid-template-columns:1fr}
  .price-panel{padding:28px}
@@ -329,7 +339,7 @@ input, select, textarea { font-size: 16px; } /* Prevents iOS Safari zoom on focu
       <article class="service-card reveal">
         <div class="service-top"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="9" r="2.5"/><path d="M8.5 16c.8-2.2 6.2-2.2 7 0"/></svg></div><span class="service-category">Identity</span></div>
         <h3>Aadhaar address update assistance</h3><p>Guidance on required documents and the applicable official update process, with the customer in control of authentication.</p>
-        <div class="service-meta"><span>Service fee</span><strong>From ₹500*</strong></div>
+        <div class="service-meta"><span>Service fee</span><strong>From ₹250*</strong></div>
         <details class="service-more"><summary>See how we can help <span class="service-toggle" aria-hidden="true">+</span></summary><div class="service-more-content"><p>We can explain the document checklist and official steps. You stay in control of your Aadhaar details and authentication.</p><a class="service-action" href="#contact" data-service="Aadhaar address update assistance">Ask about this service <span aria-hidden="true">↗</span></a></div></details>
       </article>
       <article class="service-card reveal">
@@ -345,6 +355,12 @@ input, select, textarea { font-size: 16px; } /* Prevents iOS Safari zoom on focu
         <details class="service-more"><summary>See how we can help <span class="service-toggle" aria-hidden="true">+</span></summary><div class="service-more-content"><p>We can help you understand the form and supporting documents before you use the official application channel.</p><a class="service-action" href="#contact" data-service="Voter registration / update">Ask about this service <span aria-hidden="true">↗</span></a></div></details>
       </article>
       <article class="service-card reveal">
+        <div class="service-top"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h3M15.5 15.5l1.5 1.5 3-3"/></svg></div><span class="service-category">Documents</span></div>
+        <h3>Passport application / update / renewal</h3><p>Guidance on documents and application steps for new passport, update and renewal requests.</p>
+        <div class="service-meta"><span>Service fee</span><strong>From ₹1,000*</strong></div>
+        <details class="service-more"><summary>See how we can help <span class="service-toggle" aria-hidden="true">+</span></summary><div class="service-more-content"><p>We can help you review the document checklist and understand the official passport application process.</p><a class="service-action" href="#contact" data-service="Passport application / update / renewal">Ask about this service <span aria-hidden="true">↗</span></a></div></details>
+      </article>
+      <article class="service-card reveal">
         <div class="service-top"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4.5 6v5.5c0 4.5 3.2 7.6 7.5 9.5 4.3-1.9 7.5-5 7.5-9.5V6L12 3Z"/><path d="M12 8v4l2.5 1.5"/></svg></div><span class="service-category">Not available yet</span></div>
         <h3>Insurance support</h3><p>Insurance-related services are not currently offered. This section may be updated if the appropriate authorization is obtained.</p>
         <div class="service-meta"><span>Availability</span><strong>Coming later</strong></div>
@@ -352,6 +368,80 @@ input, select, textarea { font-size: 16px; } /* Prevents iOS Safari zoom on focu
       </article>
     </div>
     <div class="notice reveal"><strong>*Starting fees:</strong> The final service fee depends on the scope and complexity of the request. Official government or provider charges, if any, are separate and will be explained in advance. Mysaarti is an independent assistance service, not a government office or an authorized service centre unless explicitly stated.</div>
+  </div>
+</section>
+
+<section class="section documents" id="documents">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="kicker">Before you get started</div><h2>Documents to keep ready.</h2></div>
+      <p>Use this checklist as a starting point for your request. Requirements can vary by case and may be confirmed by the relevant authority.</p>
+    </div>
+    <div class="document-grid">
+      <article class="document-card reveal">
+        <h3>Aadhaar address update</h3>
+        <ul>
+          <li>Parent’s Aadhaar card (for minors)</li>
+          <li>Address proof</li>
+        </ul>
+      </article>
+      <article class="document-card reveal">
+        <h3>Electricity bill name change</h3>
+        <ul>
+          <li>Name-change NOC from the previous owner or builder</li>
+          <li>Paid electricity bill</li>
+          <li>Aadhaar card</li>
+          <li>PAN card</li>
+          <li>Form U / Form X</li>
+        </ul>
+      </article>
+      <article class="document-card reveal">
+        <h3>Property tax name change</h3>
+        <ul>
+          <li>Name-change NOC from the previous owner or builder</li>
+          <li>3 photos</li>
+          <li>Aadhaar card</li>
+          <li>Index 2</li>
+          <li>Paid property tax receipt</li>
+          <li>Complete agreement copy (needed at document submission)</li>
+        </ul>
+      </article>
+      <article class="document-card reveal">
+        <h3>PAN card application (new / update)</h3>
+        <ul>
+          <li>Aadhaar card</li>
+          <li>Electricity bill</li>
+          <li>Photo</li>
+          <li>Gazette (in case of name change)</li>
+          <li>10th marksheet / birth certificate</li>
+          <li>Other documents as applicable to the case</li>
+        </ul>
+      </article>
+      <article class="document-card reveal">
+        <h3>Voter card (new / update)</h3>
+        <ul>
+          <li>Aadhaar card</li>
+          <li>Address proof (electricity bill or passport copy)</li>
+          <li>Photo</li>
+          <li>Gazette (in case of name change)</li>
+          <li>Other documents as applicable to the case</li>
+        </ul>
+      </article>
+      <article class="document-card reveal">
+        <h3>Passport application (new / update / renewal)</h3>
+        <ul>
+          <li>Aadhaar card</li>
+          <li>PAN card</li>
+          <li>Electricity bill</li>
+          <li>10th marksheet</li>
+          <li>Birth certificate</li>
+          <li>Photo with white background</li>
+          <li>Old passport (for update / renewal)</li>
+          <li>Gazette (in case of name change)</li>
+        </ul>
+      </article>
+    </div>
+    <p class="document-note reveal">Please do not send Aadhaar numbers, OTPs or sensitive identity documents in your first message.</p>
   </div>
 </section>
 
@@ -376,13 +466,15 @@ input, select, textarea { font-size: 16px; } /* Prevents iOS Safari zoom on focu
     <div class="price-panel reveal">
       <div class="kicker">Straightforward pricing</div>
       <h2>Know the fee before you begin.</h2>
-      <div class="price-big">₹500 <span>starting service fee</span></div>
-      <p>For selected documentation-assistance services. We’ll confirm the exact fee based on your request before work begins.</p>
+      <div class="price-big">₹250 <span>starting service fee</span></div>
+      <p>Aadhaar address update assistance starts at ₹250. We’ll confirm the exact fee for your request before work begins.</p>
       <a class="btn btn-primary" href="#contact">Ask for a quote ↗</a>
     </div>
     <div class="price-list reveal">
       <div class="kicker">What to expect</div>
-      <div class="price-row"><span>Service assistance</span><span>From ₹500</span></div>
+      <div class="price-row"><span>Aadhaar address update assistance</span><span>From ₹250</span></div>
+      <div class="price-row"><span>Most listed services</span><span>From ₹500</span></div>
+      <div class="price-row"><span>Passport assistance</span><span>From ₹1,000</span></div>
       <div class="price-row"><span>Official / third-party charges</span><span>Separate, if applicable</span></div>
       <div class="price-row"><span>Complex or additional work</span><span>Quoted in advance</span></div>
       <div class="timing-note">
@@ -408,7 +500,7 @@ input, select, textarea { font-size: 16px; } /* Prevents iOS Safari zoom on focu
       <label for="service">What do you need help with?</label>
       <select id="service" name="service" required>
         <option value="">Choose a service</option>
-        <option>Property tax name change</option><option>Electricity bill name update</option><option>Aadhaar address update assistance</option><option>PAN application / update assistance</option><option>Voter registration / update</option><option>Something else</option>
+        <option>Property tax name change</option><option>Electricity bill name update</option><option>Aadhaar address update assistance</option><option>PAN application / update assistance</option><option>Voter registration / update</option><option>Passport application / update / renewal</option><option>Something else</option>
       </select>
       <label for="message">A short description</label><textarea id="message" name="message" placeholder="Briefly describe your request (no ID numbers or OTPs)" required></textarea>
       <button class="btn btn-primary" type="submit">Continue to WhatsApp <span aria-hidden="true">↗</span></button>
