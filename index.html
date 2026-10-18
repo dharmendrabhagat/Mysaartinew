@@ -106,18 +106,14 @@ h2{font-size:clamp(2.2rem,4vw,3.55rem);letter-spacing:-.065em;line-height:1.05;m
 .service-more[open] .service-toggle{transform:rotate(45deg)}
 .service-more-content{padding:10px 0 1px;animation:service-in .22s ease-out}
 .service-more-content p{margin:0 0 12px;color:#6a7c91;font-size:.82rem;line-height:1.65}
+.service-more-content ul{margin:0 0 12px;padding-left:19px;color:#6a7c91;font-size:.82rem;line-height:1.65}
+.service-more-content li+li{margin-top:4px}
+.service-more-content p.document-note{margin:0 0 12px;color:#617185;font-size:.78rem}
 .service-action{display:inline-flex;align-items:center;gap:7px;color:#fff;background:#143e70;border-radius:999px;padding:10px 14px;font-size:.78rem;font-weight:800;transition:transform .2s,background .2s}
 .service-action:hover{transform:translateY(-2px);background:#245b98}
 .service-unavailable{color:#74839a;background:#f0f3f7}
 @keyframes service-in{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
 .notice{margin-top:22px;padding:16px 18px;border-radius:14px;background:#eaf1f8;color:#536579;font-size:.82rem;line-height:1.7}
-.documents{background:#edf3fa}
-.document-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.document-card{padding:22px;border:1px solid #dce6f2;border-radius:20px;background:#fff}
-.document-card h3{margin:0 0 12px;color:#102b4e;font-size:1rem;letter-spacing:-.02em}
-.document-card ul{margin:0;padding-left:19px;color:#687a90;font-size:.86rem;line-height:1.7}
-.document-card li+li{margin-top:5px}
-.document-note{margin:22px 0 0;color:#617185;font-size:.84rem;line-height:1.7}
 .how{background:#edf3fa}
 .how-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;align-items:start}
 .how-intro p{color:#617185;line-height:1.85;max-width:390px}
@@ -172,7 +168,6 @@ footer{background:#061521;color:#9badc2;padding:27px 0;font-size:.78rem}
  .stage{min-height:460px}
  .section-head{display:block}.section-head p{margin-top:20px}
  .service-grid{grid-template-columns:repeat(2,1fr)}
- .document-grid{grid-template-columns:repeat(2,1fr)}
  .contact-grid{gap:35px}
 }
 @media(max-width:600px){
@@ -186,7 +181,6 @@ footer{background:#061521;color:#9badc2;padding:27px 0;font-size:.78rem}
  .label-top{right:-2px;top:13px}.label-bottom{left:0;bottom:4px}
  .section{padding:72px 0}
  .service-grid{grid-template-columns:1fr}
- .document-grid{grid-template-columns:1fr}
  .service-card{min-height:215px}
  .pricing-grid{grid-template-columns:1fr}
  .price-panel{padding:28px}
@@ -328,37 +322,37 @@ input, select, textarea { font-size: 16px; } /* Prevents iOS Safari zoom on focu
         <div class="service-top"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 10h1m4 0h1M9 14h1m4 0h1M10 21v-4h4v4"/></svg></div><span class="service-category">Property</span></div>
         <h3>Property tax name change</h3><p>Guidance with documents and the name-change application process for applicable municipal property-tax records.</p>
         <div class="service-meta"><span>Service fee</span><strong>From ₹500*</strong></div>
-        <details class="service-more"><summary>See how we can help <span class="service-toggle" aria-hidden="true">+</span></summary><div class="service-more-content"><p>Understand the paperwork, prepare your request and learn the next steps for your local property-tax record.</p><a class="service-action" href="#contact" data-service="Property tax name change">Ask about this service <span aria-hidden="true">↗</span></a></div></details>
+        <details class="service-more"><summary>Documents needed <span class="service-toggle" aria-hidden="true">+</span></summary><div class="service-more-content"><p><strong>Documents to keep ready:</strong></p><ul><li>Name-change NOC from the previous owner or builder</li><li>3 photos</li><li>Aadhaar card</li><li>Index 2</li><li>Paid property tax receipt</li><li>Complete agreement copy (needed at document submission)</li></ul><p class="document-note">Additional documents may be required depending on your case.</p><p>We can help you understand the paperwork and next steps for your local property-tax record.</p><a class="service-action" href="#contact" data-service="Property tax name change">Ask about this service <span aria-hidden="true">↗</span></a></div></details>
       </article>
       <article class="service-card reveal">
         <div class="service-top"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5M8 17h3"/><path d="m15 16 2 2 4-4"/></svg></div><span class="service-category">Utilities</span></div>
         <h3>Electricity bill name update</h3><p>Help preparing the paperwork and navigating your electricity provider’s name-transfer process.</p>
         <div class="service-meta"><span>Service fee</span><strong>From ₹500*</strong></div>
-        <details class="service-more"><summary>See how we can help <span class="service-toggle" aria-hidden="true">+</span></summary><div class="service-more-content"><p>Get help understanding the provider’s process and organizing the information for your request.</p><a class="service-action" href="#contact" data-service="Electricity bill name update">Ask about this service <span aria-hidden="true">↗</span></a></div></details>
+        <details class="service-more"><summary>Documents needed <span class="service-toggle" aria-hidden="true">+</span></summary><div class="service-more-content"><p><strong>Documents to keep ready:</strong></p><ul><li>Name-change NOC from the previous owner or builder</li><li>Paid electricity bill</li><li>Aadhaar card</li><li>PAN card</li><li>Form U / Form X</li></ul><p class="document-note">Additional documents may be required depending on your case.</p><p>We can help you understand the provider’s process and organize your request.</p><a class="service-action" href="#contact" data-service="Electricity bill name update">Ask about this service <span aria-hidden="true">↗</span></a></div></details>
       </article>
       <article class="service-card reveal">
         <div class="service-top"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="9" r="2.5"/><path d="M8.5 16c.8-2.2 6.2-2.2 7 0"/></svg></div><span class="service-category">Identity</span></div>
         <h3>Aadhaar address update assistance</h3><p>Guidance on required documents and the applicable official update process, with the customer in control of authentication.</p>
         <div class="service-meta"><span>Service fee</span><strong>From ₹250*</strong></div>
-        <details class="service-more"><summary>See how we can help <span class="service-toggle" aria-hidden="true">+</span></summary><div class="service-more-content"><p>We can explain the document checklist and official steps. You stay in control of your Aadhaar details and authentication.</p><a class="service-action" href="#contact" data-service="Aadhaar address update assistance">Ask about this service <span aria-hidden="true">↗</span></a></div></details>
+        <details class="service-more"><summary>Documents needed <span class="service-toggle" aria-hidden="true">+</span></summary><div class="service-more-content"><p><strong>Documents to keep ready:</strong></p><ul><li>Parent’s Aadhaar card (for minors)</li><li>Address proof</li></ul><p class="document-note">Additional documents may be required depending on your case.</p><p>You stay in control of your Aadhaar details and authentication.</p><a class="service-action" href="#contact" data-service="Aadhaar address update assistance">Ask about this service <span aria-hidden="true">↗</span></a></div></details>
       </article>
       <article class="service-card reveal">
         <div class="service-top"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><circle cx="9" cy="10" r="2"/><path d="M6 16c.7-2 5.3-2 6 0M14 9h3M14 13h3M14 17h2"/></svg></div><span class="service-category">Documents</span></div>
         <h3>PAN application / update</h3><p>Help understanding application requirements and preparing information for the appropriate authorized channel.</p>
         <div class="service-meta"><span>Service fee</span><strong>From ₹500*</strong></div>
-        <details class="service-more"><summary>See how we can help <span class="service-toggle" aria-hidden="true">+</span></summary><div class="service-more-content"><p>Get a clearer view of the information needed and where to continue through an appropriate authorized channel.</p><a class="service-action" href="#contact" data-service="PAN application / update assistance">Ask about this service <span aria-hidden="true">↗</span></a></div></details>
+        <details class="service-more"><summary>Documents needed <span class="service-toggle" aria-hidden="true">+</span></summary><div class="service-more-content"><p><strong>Documents to keep ready:</strong></p><ul><li>Aadhaar card</li><li>Electricity bill</li><li>Photo</li><li>Gazette (in case of name change)</li><li>10th marksheet / birth certificate</li></ul><p class="document-note">Additional documents may be required depending on your case.</p><p>We can help you understand the requirements and the appropriate authorized channel.</p><a class="service-action" href="#contact" data-service="PAN application / update assistance">Ask about this service <span aria-hidden="true">↗</span></a></div></details>
       </article>
       <article class="service-card reveal">
         <div class="service-top"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h4"/><path d="m15 16 2 2 3-4"/></svg></div><span class="service-category">Documents</span></div>
         <h3>Voter registration / update</h3><p>Assistance with understanding voter application forms and supporting documents through official channels.</p>
         <div class="service-meta"><span>Service fee</span><strong>From ₹500*</strong></div>
-        <details class="service-more"><summary>See how we can help <span class="service-toggle" aria-hidden="true">+</span></summary><div class="service-more-content"><p>We can help you understand the form and supporting documents before you use the official application channel.</p><a class="service-action" href="#contact" data-service="Voter registration / update">Ask about this service <span aria-hidden="true">↗</span></a></div></details>
+        <details class="service-more"><summary>Documents needed <span class="service-toggle" aria-hidden="true">+</span></summary><div class="service-more-content"><p><strong>Documents to keep ready:</strong></p><ul><li>Aadhaar card</li><li>Address proof (electricity bill or passport copy)</li><li>Photo</li><li>Gazette (in case of name change)</li></ul><p class="document-note">Additional documents may be required depending on your case.</p><p>We can help you understand the form and supporting documents before you use the official application channel.</p><a class="service-action" href="#contact" data-service="Voter registration / update">Ask about this service <span aria-hidden="true">↗</span></a></div></details>
       </article>
       <article class="service-card reveal">
         <div class="service-top"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h3M15.5 15.5l1.5 1.5 3-3"/></svg></div><span class="service-category">Documents</span></div>
         <h3>Passport application / update / renewal</h3><p>Guidance on documents and application steps for new passport, update and renewal requests.</p>
         <div class="service-meta"><span>Service fee</span><strong>From ₹1,000*</strong></div>
-        <details class="service-more"><summary>See how we can help <span class="service-toggle" aria-hidden="true">+</span></summary><div class="service-more-content"><p>We can help you review the document checklist and understand the official passport application process.</p><a class="service-action" href="#contact" data-service="Passport application / update / renewal">Ask about this service <span aria-hidden="true">↗</span></a></div></details>
+        <details class="service-more"><summary>Documents needed <span class="service-toggle" aria-hidden="true">+</span></summary><div class="service-more-content"><p><strong>Documents to keep ready:</strong></p><ul><li>Aadhaar card</li><li>PAN card</li><li>Electricity bill</li><li>10th marksheet</li><li>Birth certificate</li><li>Photo with white background</li><li>Old passport (for update / renewal)</li><li>Gazette (in case of name change)</li></ul><p class="document-note">Additional documents may be required depending on your case.</p><p>We can help you understand the official passport application process.</p><a class="service-action" href="#contact" data-service="Passport application / update / renewal">Ask about this service <span aria-hidden="true">↗</span></a></div></details>
       </article>
       <article class="service-card reveal">
         <div class="service-top"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4.5 6v5.5c0 4.5 3.2 7.6 7.5 9.5 4.3-1.9 7.5-5 7.5-9.5V6L12 3Z"/><path d="M12 8v4l2.5 1.5"/></svg></div><span class="service-category">Not available yet</span></div>
@@ -368,80 +362,6 @@ input, select, textarea { font-size: 16px; } /* Prevents iOS Safari zoom on focu
       </article>
     </div>
     <div class="notice reveal"><strong>*Starting fees:</strong> The final service fee depends on the scope and complexity of the request. Official government or provider charges, if any, are separate and will be explained in advance. Mysaarti is an independent assistance service, not a government office or an authorized service centre unless explicitly stated.</div>
-  </div>
-</section>
-
-<section class="section documents" id="documents">
-  <div class="container">
-    <div class="section-head reveal">
-      <div><div class="kicker">Before you get started</div><h2>Documents to keep ready.</h2></div>
-      <p>Use this checklist as a starting point for your request. Requirements can vary by case and may be confirmed by the relevant authority.</p>
-    </div>
-    <div class="document-grid">
-      <article class="document-card reveal">
-        <h3>Aadhaar address update</h3>
-        <ul>
-          <li>Parent’s Aadhaar card (for minors)</li>
-          <li>Address proof</li>
-        </ul>
-      </article>
-      <article class="document-card reveal">
-        <h3>Electricity bill name change</h3>
-        <ul>
-          <li>Name-change NOC from the previous owner or builder</li>
-          <li>Paid electricity bill</li>
-          <li>Aadhaar card</li>
-          <li>PAN card</li>
-          <li>Form U / Form X</li>
-        </ul>
-      </article>
-      <article class="document-card reveal">
-        <h3>Property tax name change</h3>
-        <ul>
-          <li>Name-change NOC from the previous owner or builder</li>
-          <li>3 photos</li>
-          <li>Aadhaar card</li>
-          <li>Index 2</li>
-          <li>Paid property tax receipt</li>
-          <li>Complete agreement copy (needed at document submission)</li>
-        </ul>
-      </article>
-      <article class="document-card reveal">
-        <h3>PAN card application (new / update)</h3>
-        <ul>
-          <li>Aadhaar card</li>
-          <li>Electricity bill</li>
-          <li>Photo</li>
-          <li>Gazette (in case of name change)</li>
-          <li>10th marksheet / birth certificate</li>
-          <li>Other documents as applicable to the case</li>
-        </ul>
-      </article>
-      <article class="document-card reveal">
-        <h3>Voter card (new / update)</h3>
-        <ul>
-          <li>Aadhaar card</li>
-          <li>Address proof (electricity bill or passport copy)</li>
-          <li>Photo</li>
-          <li>Gazette (in case of name change)</li>
-          <li>Other documents as applicable to the case</li>
-        </ul>
-      </article>
-      <article class="document-card reveal">
-        <h3>Passport application (new / update / renewal)</h3>
-        <ul>
-          <li>Aadhaar card</li>
-          <li>PAN card</li>
-          <li>Electricity bill</li>
-          <li>10th marksheet</li>
-          <li>Birth certificate</li>
-          <li>Photo with white background</li>
-          <li>Old passport (for update / renewal)</li>
-          <li>Gazette (in case of name change)</li>
-        </ul>
-      </article>
-    </div>
-    <p class="document-note reveal">Please do not send Aadhaar numbers, OTPs or sensitive identity documents in your first message.</p>
   </div>
 </section>
 
