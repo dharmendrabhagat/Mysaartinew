@@ -465,6 +465,17 @@ const observer = new IntersectionObserver(entries => {
 },{threshold:.12});
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
+const serviceDetails = document.querySelectorAll("#services details.service-more");
+serviceDetails.forEach(detail => {
+  detail.addEventListener("toggle", () => {
+    if (detail.open) {
+      serviceDetails.forEach(other => {
+        if (other !== detail) other.open = false;
+      });
+    }
+  });
+});
+
 const serviceSelect = document.getElementById("service");
 document.querySelectorAll("[data-service]").forEach(link => {
   link.addEventListener("click", () => {
