@@ -457,6 +457,13 @@ input, select, textarea { font-size: 16px; } /* Prevents iOS Safari zoom on focu
 const WHATSAPP_NUMBER = "919967148397";
 document.getElementById("year").textContent = new Date().getFullYear();
 
+document.addEventListener("contextmenu", event => event.preventDefault());
+document.addEventListener("keydown", event => {
+  if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "u") {
+    event.preventDefault();
+  }
+});
+
 const card = document.getElementById("tiltCard");
 const stage = document.getElementById("stage");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
